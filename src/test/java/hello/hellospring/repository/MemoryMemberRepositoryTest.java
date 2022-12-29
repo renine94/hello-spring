@@ -17,6 +17,7 @@ class MemoryMemberRepositoryTest {
     @AfterEach
     public void afterEach() {
         // 아래의 TestCase 들이 실행되고 나서 실행되는 콜백 메서드.
+        // Python - Flask 의 teardown 과 비슷한 느낌
         repository.clearStore();
     }
 
