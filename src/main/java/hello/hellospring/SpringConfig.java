@@ -13,25 +13,23 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    // @PersistenceContext
+    private final MemberRepository memberRepository;
 
-    private EntityManager em;
-
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    @Autowired  // 생성자 1개일때는 생략 가능
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-        // return new MemoryMemberRepository();
-        // return new JdbcMemberRepository(dataSource);
-        // return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+//         return new MemoryMemberRepository();
+//         return new JdbcMemberRepository(dataSource);
+//         return new JdbcTemplateMemberRepository(dataSource);
+//         return new JpaMemberRepository(em);
+//    }
 }
