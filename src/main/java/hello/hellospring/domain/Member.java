@@ -1,8 +1,14 @@
 package hello.hellospring.domain;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Member {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    // @Column(name = "username")  DB Column 이름이 username 이면 해당 어노테이션을 붙여준다.
     private String name;
 
     public Long getId() {
